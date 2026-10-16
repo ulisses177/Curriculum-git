@@ -1,5 +1,7 @@
 # Currículo Interativo — Ulisses Casemiro
 
+🔗 **https://ulisses177.github.io/Curriculum-git/**
+
 Versão **web / mobile** do meu currículo: leitura em coluna centralizada com uma
 animação do **conjunto de Julia** ao fundo, cuja rotação no plano complexo é
 **dirigida pelo scroll** (parallax no espaço dos parâmetros `c`).
