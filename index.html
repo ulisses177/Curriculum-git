@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ulisses Casemiro — Desenvolvedor de Software</title>
+<style>
+  :root {
+    --accent: #0E6D72;
+    --accent-dark: #0A4F53;
+    --accent-soft: #E4F0F0;
+    --ink: #1b1b1b;
+    --muted: #5f6b6c;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* fractal de fundo, fixo, bem claro */
+  #fx {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: .16;
+    pointer-events: none;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 22px 120px;
+  }
+
+  /* sombra clara nas fontes pra não brigar com o fractal */
+  main, main * {
+    text-shadow: 0 0 7px #fff, 0 0 12px rgba(255, 255, 255, .9), 0 0 18px rgba(255, 255, 255, .8);
+  }
+
+  header { padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+  h1 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    line-height: 1.05;
+  }
+  .role {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .intro {
+    margin: 18px 0 0;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #333;
+  }
+
+  section { margin-top: 26px; }
+  h2 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h2::before {
+    content: "";
+    display: inline-block;
+    width: 9px; height: 9px;
+    background: var(--accent);
+    margin-right: 10px;
+    vertical-align: middle;
+    position: relative; top: -1px;
+  }
+
+  .entry {
+    border-left: 3px solid var(--accent-soft);
+    padding-left: 14px;
+    margin-bottom: 16px;
+  }
+  .entry:last-child { margin-bottom: 0; }
+  .org { font-size: 16px; font-weight: 700; }
+  .sub { color: var(--accent-dark); font-weight: 600; }
+  .meta { color: var(--muted); font-size: 13.5px; }
+  .meta + .meta { margin-top: 1px; }
+
+  ul { margin: 8px 0 0; padding: 0; list-style: none; }
+  li { position: relative; padding-left: 16px; margin-bottom: 5px; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+  }
+
+  .tiles { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tile {
+    display: inline-block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    background: var(--accent-soft);
+    padding: 7px 13px;
+    border-radius: 3px;
+  }
+  .tile.solid { background: var(--accent); color: #fff; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:active { text-decoration: underline; }
+
+  footer {
+    margin-top: 34px;
+    padding-top: 14px;
+    border-top: 1px solid #dcdcdc;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: .2px;
+  }
+  footer .accent { color: var(--accent); font-weight: 600; }
+
+  .hint {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 12px;
+    color: var(--muted);
+    background: rgba(255,255,255,.7);
+    padding: 6px 12px;
+    border-radius: 999px;
+    transition: opacity .4s ease;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="fx"></canvas>
+
+<main>
+  <header>
+    <h1>Ulisses Casemiro</h1>
+    <div class="role">Desenvolvedor de Software</div>
+  </header>
+
+  <p class="intro">Cursando Bacharelado em Engenharia da Computação na FMU. Fluente em português e inglês, desenvolvedor poliglota atuante em C, C++, Java, JavaScript e Python, com sólida base em arquitetura de software e IA Generativa. Premiado no GGJ 2021 pelo multiplayer Geisterjager, categoria &ldquo;Unreal Engine Multiplayer Diversifier&rdquo;, Atuou com IA e Backend na Exati Solutions, projetando pipelines RAG, integrando LLMs multimodais para processamento contextual de documentos e configurando ambientes corporativos robustos.</p>
+
+  <section>
+    <h2>Experiência</h2>
+
+    <div class="entry">
+      <div class="org">Exati Tecnologia</div>
+      <div class="sub">Desenvolvedor de Software Júnior</div>
+      <div class="meta">jun. 2024 – mai. 2026 · Curitiba, PR</div>
+      <ul>
+        <li>Projeto de pipelines RAG otimizados e integração de LLMs multimodais para processamento contextual de documentos.</li>
+        <li>Configuração de ambientes corporativos robustos com foco em IA e backend.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="org">Imersys</div>
+      <div class="sub">Desenvolvedor de Jogos</div>
+      <div class="meta">mar. 2020 – dez. 2021 · Curitiba, PR</div>
+      <ul>
+        <li>Desenvolvimento de jogos na indústria criativa.</li>
+        <li>Premiado no GGJ 2021 pelo multiplayer Geisterjager, categoria &ldquo;Unreal Engine Multiplayer Diversifier&rdquo;.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="org">Lactec</div>
+      <div class="sub">Estagiário</div>
+      <div class="meta">set. 2018 – set. 2019 · Curitiba, PR</div>
+      <div class="sub">Estagiário</div>
+      <div class="meta">jan. 2017 – nov. 2018 · Curitiba, PR</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Formação Acadêmica</h2>
+    <div class="entry">
+      <div class="org">Centro Universitário FMU | FIAM-FAAM</div>
+      <div class="sub">Bacharelado em Engenharia da Computação</div>
+      <div class="meta">ago. 2026 – dez. 2028</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Competências</h2>
+    <div class="tiles">
+      <span class="tile">JavaScript</span>
+      <span class="tile">Python</span>
+      <span class="tile">Processamento de Linguagem Natural</span>
+      <span class="tile">Unreal Engine · Unity · Godot</span>
+      <span class="tile">C · C++ · C# · CUDA · Lua</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Idiomas</h2>
+    <div class="tiles">
+      <span class="tile">Português — Nativo</span>
+      <span class="tile">Inglês — Fluente</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publicações</h2>
+    <p><a href="https://www.academia.edu/88631758/Using_Game_Engines_In_Lightning_Shielding_The_Application_Of_The_Rolling_Spheres_Method_On_Virtual_As_Built_Power_Substations?auto=download">Using Game Engines in Lightning Shielding: The Application of the Rolling Spheres Method on Virtual As-Built Power Substations</a></p>
+  </section>
+
+  <footer>
+    <span class="accent">ulissescasemiro@gmail.com</span> ·  · São Paulo – SP · <a href="https://www.linkedin.com/in/ulisses-casemiro-217822132">linkedin.com/in/ulisses-casemiro-217822132</a>
+  </footer>
+</main>
+
+<div class="hint" id="hint">role para animar o Julia ↓</div>
+
+<script>
+/* ============ estado base (do seu print) ============ */
+const BASE = {
+  zoom: 0.369, panX: 0.10337, panY: -0.03367, angle: -0.08,
+  cRe: 0.50274, cIm: 0.47987, lineH: 4.0, maxIter: 40.0
+};
+const SPAN = 0.6;               // intervalo (radianos) que o c gira conforme você rola
+const BASE_THETA = Math.atan2(BASE.cIm, BASE.cRe);
+const BASE_R = Math.hypot(BASE.cRe, BASE.cIm);
+
+let canvas = document.getElementById('fx');
+let gl, program, ctx2d, renderer = 'none';
+let progress = 0.5;
+
+/* ============ shader (estimador de distância, só o contorno) ============ */
+const VS = `attribute vec4 position; void main(){ gl_Position = position; }`;
+
+const FS = `precision highp float;
+uniform vec2 resolution;
+uniform float zoom;
+uniform vec2 pan;
+uniform float angle;
+uniform vec2 c;
+uniform float lineH;
+uniform float maxIter;
+const float MAXI = 400.0;
+vec2 cmul(vec2 a, vec2 b){ return vec2(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x); }
+void main(){
+  vec2 res = resolution;
+  float m = min(res.x, res.y);
+  vec2 uv = (gl_FragCoord.xy - 0.5*res)/m;
+  float s = sin(angle), co = cos(angle);
+  uv = mat2(co,-s,s,co)*uv;
+  uv = uv/zoom + pan;
+  float pw = 1.0/(m*zoom);
+  vec2 z = uv; vec2 dz = vec2(1.0,0.0); float escaped = 0.0;
+  for(float i=0.0;i<MAXI;i++){
+    dz = 2.0*cmul(z,dz);
+    z = cmul(z,z) + c;
+    if(dot(z,z) > 256.0){ escaped = 1.0; break; }
+    if(i >= maxIter) break;
+  }
+  float ink = 0.0;
+  if(escaped > 0.5){
+    float mm = sqrt(dot(z,z));
+    float d = mm*log(mm)/max(length(dz),1e-9);
+    float eps = pw*max(0.4,lineH);
+    ink = 1.0 - smoothstep(eps, eps+pw, d);
+  }
+  gl_FragColor = vec4(vec3(1.0 - ink), 1.0);
+}`;
+
+function compile(type, src){
+  const sh = gl.createShader(type);
+  gl.shaderSource(sh, src); gl.compileShader(sh);
+  if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)){ console.error(gl.getShaderInfoLog(sh)); return null; }
+  return sh;
+}
+
+function initGL(){
+  gl = canvas.getContext('webgl', {antialias:true}) || canvas.getContext('experimental-webgl');
+  if(gl){
+    const vs = compile(gl.VERTEX_SHADER, VS), fs = compile(gl.FRAGMENT_SHADER, FS);
+    if(vs && fs){
+      program = gl.createProgram();
+      gl.attachShader(program, vs); gl.attachShader(program, fs); gl.linkProgram(program);
+      if(gl.getProgramParameter(program, gl.LINK_STATUS)){
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+        const loc = gl.getAttribLocation(program, 'position');
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+        renderer = 'webgl';
+        return;
+      }
+    }
+    gl = null;
+  }
+  // fallback 2D
+  const nc = canvas.cloneNode(false);
+  canvas.parentNode.replaceChild(nc, canvas);
+  canvas = nc;
+  ctx2d = canvas.getContext('2d');
+  renderer = ctx2d ? '2d' : 'none';
+}
+
+function resize(){
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(window.innerWidth * dpr);
+  canvas.height = Math.floor(window.innerHeight * dpr);
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  if(renderer === 'webgl') gl.viewport(0,0,canvas.width,canvas.height);
+  else dirty = true;
+}
+
+/* 2D fallback (mesma matemática) */
+let dirty = true;
+function escDist2D(wx, wy, cx, cy, maxIter){
+  let zx = wx, zy = wy, dzx = 1, dzy = 0;
+  const mi = Math.min(maxIter, 400);
+  for(let k=0;k<mi;k++){
+    const ndzx = 2*(zx*dzx - zy*dzy), ndzy = 2*(zx*dzy + zy*dzx);
+    dzx = ndzx; dzy = ndzy;
+    const nx = zx*zx - zy*zy + cx, ny = 2*zx*zy + cy;
+    zx = nx; zy = ny;
+    const r2 = zx*zx + zy*zy;
+    if(r2 > 256){
+      const mm = Math.sqrt(r2);
+      return mm*Math.log(mm)/Math.max(Math.hypot(dzx,dzy),1e-9);
+    }
+  }
+  return -1;
+}
+function render2D(cx, cy){
+  const scale = 0.5;
+  const W = Math.max(2, Math.round(canvas.width*scale));
+  const H = Math.max(2, Math.round(canvas.height*scale));
+  const off = document.createElement('canvas'); off.width = W; off.height = H;
+  const octx = off.getContext('2d');
+  const img = octx.createImageData(W, H);
+  const data = img.data;
+  const m = Math.min(W, H), zoom = BASE.zoom * (W / (canvas.width)); // mantém enquadramento
+  const zoomW = BASE.zoom * (canvas.width / m); // world zoom relativo
+  const sA = Math.sin(BASE.angle), cA = Math.cos(BASE.angle);
+  const pw = 1/(m*BASE.zoom);
+  const eps = pw*Math.max(0.4, BASE.lineH);
+  const smooth = (a,b,x)=>{ const t=Math.max(0,Math.min(1,(x-a)/(b-a))); return t*t*(3-2*t); };
+  for(let y=0;y<H;y++){
+    const idy = (H/2 - (y+0.5))/m;
+    for(let x=0;x<W;x++){
+      const idx = (x+0.5 - W/2)/m;
+      const ux = cA*idx - sA*idy, uy = sA*idx + cA*idy;
+      const wx = ux/BASE.zoom + BASE.panX, wy = uy/BASE.zoom + BASE.panY;
+      const d = escDist2D(wx, wy, cx, cy, BASE.maxIter);
+      let ink = 0;
+      if(d >= 0) ink = 1 - smooth(eps, eps+pw, d);
+      const v = Math.round(255*(1-Math.max(0,Math.min(1,ink))));
+      const o = (y*W+x)*4;
+      data[o]=v; data[o+1]=v; data[o+2]=v; data[o+3]=255;
+    }
+  }
+  octx.putImageData(img,0,0);
+  ctx2d.clearRect(0,0,canvas.width,canvas.height);
+  ctx2d.imageSmoothingEnabled = true;
+  ctx2d.drawImage(off,0,0,canvas.width,canvas.height);
+  dirty = false;
+}
+
+function draw(){
+  const th = BASE_THETA + (progress - 0.5) * SPAN;
+  const cx = BASE_R*Math.cos(th), cy = BASE_R*Math.sin(th);
+  if(renderer === 'webgl'){
+    gl.useProgram(program);
+    const u = (n)=>gl.getUniformLocation(program,n);
+    gl.uniform2f(u('resolution'), canvas.width, canvas.height);
+    gl.uniform1f(u('zoom'), BASE.zoom);
+    gl.uniform2f(u('pan'), BASE.panX, BASE.panY);
+    gl.uniform1f(u('angle'), BASE.angle);
+    gl.uniform2f(u('c'), cx, cy);
+    gl.uniform1f(u('lineH'), BASE.lineH);
+    gl.uniform1f(u('maxIter'), BASE.maxIter);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  } else if(renderer === '2d' && dirty){
+    render2D(cx, cy);
+  }
+}
+
+function updateProgress(){
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress = max > 4 ? Math.min(1, Math.max(0, window.scrollY/max)) : 0.5;
+  if(renderer === '2d') dirty = true;
+  const h = document.getElementById('hint');
+  if(h && window.scrollY > 40) h.style.opacity = '0';
+}
+
+function loop(){ draw(); requestAnimationFrame(loop); }
+
+window.addEventListener('scroll', updateProgress, {passive:true});
+window.addEventListener('resize', () => { resize(); updateProgress(); });
+window.addEventListener('load', () => {
+  initGL(); resize(); updateProgress(); loop();
+});
+</script>
+</body>
+</html>
