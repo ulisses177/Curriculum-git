@@ -6,17 +6,41 @@
 <title>Ulisses Casemiro | Desenvolvedor de Software | Backend e IA</title>
 <style>
   :root {
+    --bg: #fff;
+    --ink: #1b1b1b;
+    --muted: #5f6b6c;
+    --line: #dcdcdc;
     --accent: #0E6D72;
     --accent-dark: #0A4F53;
     --accent-soft: #E4F0F0;
-    --ink: #1b1b1b;
-    --muted: #5f6b6c;
+    --tile-bg: #0A4F53;
+    --tile-fg: #fff;
+    --glow: #fff;
+    --fractal-filter: none;
+    --fractal-opacity: .10;
+    --hint-bg: rgba(255, 255, 255, .7);
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #101616;
+    --ink: #e8eeee;
+    --muted: #a6b3b3;
+    --line: #2A3A3A;
+    --accent: #6FD3D6;
+    --accent-dark: #9FE3E6;
+    --accent-soft: #1B2B2B;
+    --tile-bg: #0E6D72;
+    --tile-fg: #fff;
+    --glow: #101616;
+    --fractal-filter: invert(1);
+    --fractal-opacity: .12;
+    --hint-bg: rgba(16, 22, 22, .7);
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: #fff;
+    background: var(--bg);
     color: var(--ink);
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 15px;
@@ -30,7 +54,8 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    opacity: .16;
+    opacity: var(--fractal-opacity);
+    filter: var(--fractal-filter);
     pointer-events: none;
   }
 
@@ -44,7 +69,7 @@
 
   /* sombra clara nas fontes pra não brigar com o fractal */
   main, main * {
-    text-shadow: 0 0 7px #fff, 0 0 12px rgba(255, 255, 255, .9), 0 0 18px rgba(255, 255, 255, .8);
+    text-shadow: 0 0 2px var(--glow), 0 0 6px var(--glow), 0 0 12px var(--glow), 0 0 22px var(--glow), 0 0 34px var(--glow);
   }
 
   header { padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
@@ -68,7 +93,7 @@
     margin: 18px 0 0;
     font-size: 15.5px;
     line-height: 1.65;
-    color: #333;
+    color: var(--ink);
   }
 
   section { margin-top: 26px; }
@@ -116,8 +141,8 @@
     display: inline-block;
     font-size: 13.5px;
     font-weight: 600;
-    color: #fff;
-    background: var(--accent-dark);
+    color: var(--tile-fg);
+    background: var(--tile-bg);
     padding: 7px 13px;
     border-radius: 3px;
     text-shadow: none;
@@ -134,7 +159,7 @@
   footer {
     margin-top: 34px;
     padding-top: 14px;
-    border-top: 1px solid #dcdcdc;
+    border-top: 1px solid var(--line);
     text-align: center;
     font-size: 13px;
     color: var(--muted);
@@ -150,16 +175,45 @@
     z-index: 2;
     font-size: 12px;
     color: var(--muted);
-    background: rgba(255,255,255,.7);
+    background: var(--hint-bg);
     padding: 6px 12px;
     border-radius: 999px;
     transition: opacity .4s ease;
   }
+  .theme-toggle {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    text-shadow: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+  }
+  .theme-toggle:hover { border-color: var(--accent); }
 </style>
+<script>
+(function(){
+  try {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+  } catch(e) {}
+})();
+</script>
 </head>
 <body>
 
 <canvas id="fx"></canvas>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema">Tema escuro</button>
 
 <main>
   <header>
@@ -196,7 +250,7 @@
       <div class="sub">Estagiário de Pesquisa</div>
       <div class="meta">2017 a 2019 · Curitiba, PR</div>
       <ul>
-        <li>Atuação na arquitetura e na implementação de software de pesquisa aplicada, com nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamentos e visualizações.</li>
+        <li>Atuação na arquitetura e na implementação de software de pesquisa aplicada, com nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamento de técnicos operadores da infraestrutura de alta tensão e visualizações computacionais.</li>
         <li>Arquitetura e implementação de uma visualização em Unreal Engine de malhas de proteção contra descargas atmosféricas em subestações de alta tensão, em parceria com a Copel (distribuidora).</li>
         <li>Contribuição para a publicação no International Journal of Electrical and Computer Engineering em 2018.</li>
       </ul>
@@ -205,7 +259,7 @@
 
   <section>
     <h2>Trajetória</h2>
-    <p class="intro">A trajetória profissional teve início no Lactec, com pesquisa aplicada em nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamentos e visualizações. O projeto que originou a publicação no <em>International Journal of Electrical and Computer Engineering</em> em 2018 consistiu na implementação de uma visualização em Unreal Engine de malhas de proteção contra descargas atmosféricas em subestações de alta tensão, em parceria com a Copel (distribuidora). Na Imersys, o trabalho envolveu o desenvolvimento, em Unreal Engine, de um simulador de laboratório em VR para o currículo de química e ciências do ensino fundamental e médio, com interações complexas, simulação de reações e shaders otimizados para o Meta Quest 2. A participação na Global Game Jam 2021, maratona mundial de criação de jogos, ocorreu com equipe e espaço cedidos pela Imersys e resultou na categoria &ldquo;Unreal Engine Multiplayer Diversifier&rdquo; com o jogo Geisterjäger. Na Exati Solutions, as atividades incluíram a implementação de uma plataforma interna de IA para padronizar o uso de agentes de codificação, o desenvolvimento de um chatbot corporativo com RAG sobre centenas de documentos de procedimentos internos e a criação de um processador de editais com análise de conformidade para licitações públicas. A formação em Engenharia da Computação está em andamento na FMU, com conclusão prevista para dezembro de 2028.</p>
+    <p class="intro">A trajetória profissional teve início no Lactec, com pesquisa aplicada em nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamento de técnicos operadores da infraestrutura de alta tensão e visualizações computacionais. O projeto que originou a publicação no <em>International Journal of Electrical and Computer Engineering</em> em 2018 consistiu na implementação de uma visualização em Unreal Engine de malhas de proteção contra descargas atmosféricas em subestações de alta tensão, em parceria com a Copel (distribuidora). Na Imersys, o trabalho envolveu o desenvolvimento, em Unreal Engine, de um simulador de laboratório em VR para o currículo de química e ciências do ensino fundamental e médio, com interações complexas, simulação de reações e shaders otimizados para o Meta Quest 2. A participação na Global Game Jam 2021, maratona mundial de criação de jogos, ocorreu com equipe e espaço cedidos pela Imersys e resultou na categoria &ldquo;Unreal Engine Multiplayer Diversifier&rdquo; com o jogo Geisterjäger. Na Exati Solutions, as atividades incluíram a implementação de uma plataforma interna de IA para padronizar o uso de agentes de codificação, o desenvolvimento de um chatbot corporativo com RAG sobre centenas de documentos de procedimentos internos e a criação de um processador de editais com análise de conformidade para licitações públicas. A formação em Engenharia da Computação está em andamento na FMU, com conclusão prevista para dezembro de 2028.</p>
   </section>
 
   <section>
@@ -476,6 +530,21 @@ function updateProgress(){
   const h = document.getElementById('hint');
   if(h && window.scrollY > 40) h.style.opacity = '0';
 }
+
+/* ============ tema ============ */
+const themeToggle = document.getElementById('theme-toggle');
+function syncThemeToggle(){
+  const dark = document.documentElement.dataset.theme === 'dark';
+  themeToggle.textContent = dark ? 'Tema claro' : 'Tema escuro';
+  themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+}
+themeToggle.addEventListener('click', () => {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+  try { localStorage.setItem('theme', document.documentElement.dataset.theme); } catch(e) {}
+  syncThemeToggle();
+});
+syncThemeToggle();
 
 function loop(){ draw(); requestAnimationFrame(loop); }
 
