@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="{{ content.lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ content.site.title }}</title>
+<meta name="author" content="{{ content.name }}">
+<meta name="description" content="{{ content.site.description }}">
+<meta name="keywords" content="{{ content.site.keywords }}">
+<link rel="canonical" href="{{ canonical }}">
+<link rel="alternate" hreflang="pt-BR" href="{{ content.site.baseUrl }}">
+<link rel="alternate" hreflang="en-GB" href="{{ content.site.baseUrl }}en/">
+<link rel="alternate" hreflang="x-default" href="{{ content.site.baseUrl }}">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="{{ content.site.title }}">
+<meta property="og:description" content="{{ content.site.description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:locale" content="{{ og_locale }}">
+<link rel="stylesheet" href="{{ asset_prefix }}assets/styles.css">
+<script>
+(function(){
+  try {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+  } catch(e) {}
+})();
+</script>
+</head>
+<body>
+
+<canvas id="fx"></canvas>
+
+<div class="controls">
+  <button id="theme-toggle" class="theme-toggle" type="button" data-dark-label="{{ content.controls.themeDark }}" data-light-label="{{ content.controls.themeLight }}" aria-label="{{ content.controls.themeDark }}">{{ content.controls.themeDark }}</button>
+  <a class="lang-toggle" href="{{ content.controls.otherLangUrl }}" aria-label="{{ content.controls.otherLangAria }}" title="{{ content.controls.otherLangLabel }}"><span class="lang-flag" aria-hidden="true">{{ content.controls.otherLangFlag }}</span></a>
+</div>
+
+<main>
+  <header>
+    <h1>{{ content.name }}</h1>
+    <div class="role">{{ content.role }}</div>
+  </header>
+
+  <section>
+    <h2>{{ content.sections.experience.heading }}</h2>
+    {% for entry in content.sections.experience.entries %}
+    <div class="entry">
+      <div class="org">{{ entry.org }}</div>
+      <div class="sub">{{ entry.role }}</div>
+      <div class="meta">{{ entry.date }}{% if entry.place %} · {{ entry.place }}{% endif %}</div>
+      <ul>
+        {% for bullet in entry.bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ content.sections.career.heading }}</h2>
+    {% for paragraph in content.sections.career.paragraphs %}
+    <p class="intro">{{ paragraph | safe }}</p>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ content.sections.skills.heading }}</h2>
+    {% for group in content.sections.skills.groups %}
+    <div class="skill-group">
+      <p class="skill-label">{{ group.label }}</p>
+      <div class="tiles">
+        {% for item in group['items'] %}
+        <span class="tile">{{ item }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ content.sections.education.heading }}</h2>
+    <div class="entry">
+      <div class="org">{{ content.sections.education.org }}</div>
+      <div class="sub">{{ content.sections.education.role }}</div>
+      <div class="meta">{{ content.sections.education.date }}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>{{ content.sections.publication.heading }}</h2>
+    <p><a href="{{ content.sections.publication.url }}">{{ content.sections.publication.title }}</a>. <em>{{ content.sections.publication.journal }}</em>, {{ content.sections.publication.volumeLabel }} {{ content.sections.publication.volume }}, {{ content.sections.publication.issueLabel }} {{ content.sections.publication.issue }}, {{ content.sections.publication.year }}.</p>
+  </section>
+
+  <footer>
+    <span class="accent">{{ content.footer.email }}</span> · {{ content.footer.location }} · <a href="{{ content.footer.linkedin.url }}">{{ content.footer.linkedin.label }}</a> · <a href="{{ content.footer.github.url }}">{{ content.footer.github.label }}</a>
+  </footer>
+</main>
+
+<div class="hint" id="hint">{{ content.controls.hint }}</div>
+
+<script src="{{ asset_prefix }}assets/fractal.js"></script>
+</body>
+</html>

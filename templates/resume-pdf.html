@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="{{ content.lang }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ content.site.title }}</title>
+<meta name="author" content="{{ content.name }}">
+<meta name="description" content="{{ content.site.description }}">
+<meta name="keywords" content="{{ content.site.keywords }}">
+<link rel="stylesheet" href="assets/pdf.css">
+</head>
+<body>
+
+<div class="topbar"></div>
+<div class="accentline"></div>
+
+<div class="wrap">
+  <div class="bg"></div>
+
+  <header>
+    <h1>{{ content.name }}</h1>
+    <div class="role">{{ content.role }}</div>
+  </header>
+
+  <div class="content">
+
+  <section>
+    <h2>{{ content.sections.experience.heading }}</h2>
+    {% for entry in content.sections.experience.entries %}
+    <div class="entry">
+      <div class="entry-head">
+        <span class="org">{{ entry.org }}</span>
+        <span class="date">{{ entry.date }}</span>
+      </div>
+      <div class="entry-sub">
+        <span class="label">{{ entry.role }}</span>
+        {% if entry.place %}<span class="place">{{ entry.place }}</span>{% endif %}
+      </div>
+      <ul>
+        {% for bullet in entry.bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ content.sections.career.heading }}</h2>
+    {% for paragraph in content.sections.career.paragraphs %}
+    <p class="intro">{{ paragraph | safe }}</p>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ content.sections.skills.heading }}</h2>
+    {% for group in content.sections.skills.groups %}
+    <div class="skill-group">
+      <p class="skill-label">{{ group.label }}</p>
+      <div class="tiles">
+        {% for item in group['items'] %}
+        <span class="tile">{{ item }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>{{ content.sections.education.heading }}</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="org">{{ content.sections.education.org }}</span>
+        <span class="date">{{ content.sections.education.date }}</span>
+      </div>
+      <div class="entry-sub">
+        <span class="label">{{ content.sections.education.role }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>{{ content.sections.publication.heading }}</h2>
+    <p><a href="{{ content.sections.publication.url }}">{{ content.sections.publication.title }}</a>. <em>{{ content.sections.publication.journal }}</em>, {{ content.sections.publication.volumeLabel }} {{ content.sections.publication.volume }}, {{ content.sections.publication.issueLabel }} {{ content.sections.publication.issue }}, {{ content.sections.publication.year }}.</p>
+  </section>
+
+  </div>
+
+<footer>
+  <span class="accent">{{ content.footer.email }}</span>{% if content.footer.phone %} &nbsp;&middot;&nbsp; {{ content.footer.phone }}{% endif %} &nbsp;&middot;&nbsp; {{ content.footer.location }} &nbsp;&middot;&nbsp; <a href="{{ content.footer.linkedin.url }}">{{ content.footer.linkedin.label }}</a> &nbsp;&middot;&nbsp; <a href="{{ content.footer.github.url }}">{{ content.footer.github.label }}</a>
+</footer>
+
+</div>
+
+</body>
+</html>

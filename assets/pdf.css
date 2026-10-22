@@ -1,0 +1,192 @@
+:root {
+    --accent: #0E6D72;
+    --accent-dark: #0A4F53;
+    --accent-soft: #E4F0F0;
+    --ink: #1b1b1b;
+    --muted: #5f6b6c;
+    --line: #e2e8e8;
+  }
+
+  @page {
+    size: letter;
+    margin: 5mm 0 0 0;
+    @top-center {
+      content: "Ulisses Casemiro";
+      font-size: 8pt;
+      color: #5f6b6c;
+      letter-spacing: .4px;
+    }
+  }
+  @page :first {
+    margin: 0;
+    @top-center { content: none; }
+  }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: "Inter", "Noto Sans", sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    font-size: 9.2pt;
+    line-height: 1.38;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .topbar { height: 9mm; background: var(--accent); }
+  .accentline { height: 2mm; background: var(--accent-soft); }
+
+  .wrap {
+    position: relative;
+    padding: 6mm 15mm 0 15mm;
+    min-height: 0;
+  }
+
+  /* fractal em camada de fundo (atrás do texto) */
+  .bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -62%;
+    width: 100%;
+    background-image: url("fractal-pdf.png");
+    background-repeat: no-repeat;
+    background-position: 24% center;
+    background-size: cover;
+    opacity: .30;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    width: 74%;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 6pt;
+    border-bottom: 2px solid var(--ink);
+  }
+  h1 {
+    margin: 0;
+    font-size: 29pt;
+    font-weight: 600;
+    letter-spacing: .3px;
+    line-height: 1.05;
+  }
+  h1 b { font-weight: 700; }
+  .role {
+    margin-top: 4pt;
+    font-size: 11.5pt;
+    font-weight: 600;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ---------- Intro (ex-Resumo) ---------- */
+  .intro {
+    margin: 3pt 0 0 0;
+    font-size: 9.9pt;
+    line-height: 1.5;
+    color: #333;
+    break-inside: avoid;
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 4pt; }
+  h2 {
+    margin: 0 0 3pt 0;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    color: var(--accent);
+    break-after: avoid;
+  }
+  h2::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ---------- Experience entries ---------- */
+  .entry {
+    border-left: 3px solid var(--accent-soft);
+    padding-left: 11px;
+    margin-bottom: 3pt;
+    break-inside: avoid;
+  }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .org { font-size: 10.5pt; font-weight: 700; }
+  .date { color: var(--muted); white-space: nowrap; padding-left: 8pt; font-size: 8.9pt; }
+  .entry-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .entry-sub .label { font-weight: 600; color: var(--accent-dark); }
+  .entry-sub .place { color: var(--muted); white-space: nowrap; padding-left: 8pt; font-size: 8.9pt; }
+  .entry-sub + .entry-sub { margin-top: 1pt; }
+
+  ul { margin: 3pt 0 0 0; padding: 0; list-style: none; }
+  li { position: relative; padding-left: 13px; margin-bottom: 1.5pt; break-inside: avoid; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+  }
+
+  /* ---------- Metro tiles ---------- */
+  .tiles { font-size: 0; }
+  .tile {
+    display: inline-block;
+    font-size: 9.3pt;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent-dark);
+    padding: 5pt 10pt;
+    margin: 0 4pt 4pt 0;
+  }
+  .tile.solid { background: var(--accent); color: #fff; }
+
+  .skill-group { margin-bottom: 3pt; break-inside: avoid; }
+  .skill-label { font-weight: 700; color: var(--accent-dark); font-size: 9pt; margin: 0 0 2pt 0; }
+  .skill-group .tiles { margin-top: 0; }
+
+  p { margin: 0; }
+  p, li { orphans: 3; widows: 3; }
+  section a { color: var(--accent); text-decoration: none; }
+
+  /* ---------- Footer contact ---------- */
+  footer {
+    clear: both;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding: 2pt 0 0 0;
+    text-align: center;
+    font-size: 8.2pt;
+    letter-spacing: .3px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+  footer .accent { color: var(--accent); font-weight: 600; }
+  footer a { color: var(--muted); text-decoration: none; }

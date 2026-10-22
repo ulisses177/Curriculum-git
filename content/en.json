@@ -1,0 +1,131 @@
+{
+  "lang": "en-GB",
+  "site": {
+    "baseUrl": "https://ulisses177.github.io/Curriculum-git/",
+    "title": "Ulisses Casemiro | Software Developer | Backend and AI",
+    "description": "Resume of Ulisses Casemiro, a software developer focused on backend and AI, with experience in RAG, LLMs, virtual reality, and game development.",
+    "keywords": "Ulisses Casemiro, software developer, backend, AI, RAG, LLMs, Python, Unreal Engine, virtual reality, resume"
+  },
+  "name": "Ulisses Casemiro",
+  "role": "Software Developer | Backend and AI",
+  "controls": {
+    "themeDark": "Dark theme",
+    "themeLight": "Light theme",
+    "otherLangLabel": "Português",
+    "otherLangAria": "Switch to Portuguese",
+    "otherLangFlag": "🇧🇷",
+    "otherLangUrl": "../",
+    "hint": "scroll to animate the Julia set ↓"
+  },
+  "sections": {
+    "experience": {
+      "heading": "Experience",
+      "entries": [
+        {
+          "org": "Exati Tecnologia",
+          "role": "Software Developer",
+          "date": "Jun 2024 to May 2026",
+          "place": "Curitiba, PR, Brazil",
+          "bullets": [
+            "Implemented an internal AI platform with a custom interface to standardise the use of coding agents, including the evaluation of different tools before adoption.",
+            "Developed a corporate chatbot using Retrieval-Augmented Generation (RAG), indexing and tuning a knowledge base of hundreds of internal procedure documents to support the help desk.",
+            "Created a public tender processor that collects public procurement data from different countries and uses AI for efficient compliance analysis against Exati's system."
+          ]
+        },
+        {
+          "org": "Imersys",
+          "role": "Game Developer",
+          "date": "Mar 2020 to Dec 2021",
+          "place": "Curitiba, PR, Brazil",
+          "bullets": [
+            "Developed, in Unreal Engine, a VR laboratory simulator for Meta Quest 2 for a client in the education sector, covering the chemistry and science curriculum for primary and secondary education and the experiments required by the Brazilian Ministry of Education (MEC).",
+            "Participated in the Global Game Jam 2021, a worldwide game creation marathon, with a team and space provided by Imersys, winning the 'Unreal Engine Multiplayer Diversifier' category with the game Geisterjäger."
+          ]
+        },
+        {
+          "org": "Lactec",
+          "role": "Research Intern",
+          "date": "2017 to 2019",
+          "place": "Curitiba, PR, Brazil",
+          "bullets": [
+            "Worked on the architecture and implementation of applied research software involving point clouds, georeferencing, and game engines for simulations, training of high-voltage infrastructure operators, and computational visualisations.",
+            "Architected and implemented an Unreal Engine visualisation of protection meshes against atmospheric discharges in high-voltage substations, in partnership with Copel (utility company).",
+            "Contributed to the publication in the International Journal of Electrical and Computer Engineering in 2018."
+          ]
+        }
+      ]
+    },
+    "career": {
+      "heading": "Career Path",
+      "paragraphs": [
+        "The professional career began at Lactec with applied research in point clouds, georeferencing, and game engines for simulations, training of high-voltage infrastructure operators, and computational visualisations. The project that led to the publication in the <em>International Journal of Electrical and Computer Engineering</em> in 2018 consisted of implementing an Unreal Engine visualisation of protection meshes against atmospheric discharges in high-voltage substations, in partnership with Copel (utility company).",
+        "At Imersys, the work involved developing, in Unreal Engine, a VR laboratory simulator for the chemistry and science curriculum in primary and secondary education, with complex interactions, reaction simulation, and shaders optimised for Meta Quest 2. Participation in the Global Game Jam 2021, a worldwide game creation marathon, took place with a team and space provided by Imersys and resulted in the 'Unreal Engine Multiplayer Diversifier' category with the game Geisterjäger.",
+        "At Exati Solutions, activities included implementing an internal AI platform to standardise the use of coding agents, developing a corporate chatbot with Retrieval-Augmented Generation (RAG) over hundreds of internal procedure documents, and creating a public tender processor with compliance analysis for public procurement.",
+        "The Bachelor's degree in Computer Engineering is in progress at FMU, with expected completion in December 2028."
+      ]
+    },
+    "skills": {
+      "heading": "Skills",
+      "groups": [
+        {
+          "label": "Programming Languages",
+          "items": ["Python", "C", "C++", "Java", "JavaScript", "C#", "Lua"]
+        },
+        {
+          "label": "AI",
+          "items": ["RAG", "Multimodal Large Language Models (LLMs)", "Local LLMs", "Recursive agents", "LLM fine-tuning", "Generative models", "Natural Language Processing (NLP)", "CUDA"]
+        },
+        {
+          "label": "Data and 3D",
+          "items": ["Relational databases (SQL)", "Vector databases (vector stores)", "Point clouds", "Georeferencing"]
+        },
+        {
+          "label": "Backend",
+          "items": ["Service integration", "Corporate environments"]
+        },
+        {
+          "label": "Games and Immersion",
+          "items": ["Unreal Engine", "Unity", "Godot", "Virtual Reality (VR)", "Shaders", "Meta Quest 2 optimisation"]
+        },
+        {
+          "label": "Practices",
+          "items": ["Software architecture", "Scrum", "Agile methodologies"]
+        },
+        {
+          "label": "Spoken Languages",
+          "items": ["Portuguese (native)", "English (fluent)"]
+        }
+      ]
+    },
+    "education": {
+      "heading": "Education",
+      "org": "Centro Universitário FMU | FIAM-FAAM",
+      "role": "Bachelor's degree in Computer Engineering (in progress)",
+      "date": "Aug 2026 to Dec 2028 (expected)",
+      "place": ""
+    },
+    "publication": {
+      "heading": "Publication",
+      "title": "Using Game Engines in Lightning Shielding: The Application of the Rolling Spheres Method on Virtual As-Built Power Substations",
+      "journal": "International Journal of Electrical and Computer Engineering",
+      "volumeLabel": "vol.",
+      "volume": "12",
+      "issueLabel": "no.",
+      "issue": "3",
+      "year": "2018",
+      "url": "https://www.academia.edu/88631758/Using_Game_Engines_In_Lightning_Shielding_The_Application_Of_The_Rolling_Spheres_Method_On_Virtual_As_Built_Power_Substations"
+    }
+  },
+  "footer": {
+    "email": "ulissescasemiro@gmail.com",
+    "location": "São Paulo, Brazil",
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/ulisses-casemiro-217822132",
+      "label": "linkedin.com/in/ulisses-casemiro-217822132"
+    },
+    "github": {
+      "url": "https://github.com/ulisses177?tab=repositories",
+      "label": "GitHub"
+    }
+  }
+}

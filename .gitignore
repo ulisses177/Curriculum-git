@@ -1,0 +1,20 @@
+# Como gerar os PDFs localmente:
+#   pip install weasyprint jinja2
+#   python3 build.py
+#
+# Para gerar apenas os PDFs:
+#   python3 build.py --pdf-only
+#
+# Para incluir o telefone no PDF, crie content/private.json com:
+#   {"phone": "(11) 93915-5418"}
+# Esse arquivo não é versionado. Sem ele, o PDF sai sem telefone.
+#
+# Os PDFs de saída ficam em pdf/ e não são versionados.
+# As páginas web index.html e en/index.html são geradas pelo mesmo
+# comando e devem ser versionadas para o GitHub Pages.
+
+pdf/
+_pdf-*.html
+__pycache__/
+.DS_Store
+content/private.json

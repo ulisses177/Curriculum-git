@@ -4,201 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ulisses Casemiro | Desenvolvedor de Software | Backend e IA</title>
-<style>
-  :root {
-    --bg: #fff;
-    --ink: #1b1b1b;
-    --muted: #5f6b6c;
-    --line: #dcdcdc;
-    --accent: #0E6D72;
-    --accent-dark: #0A4F53;
-    --accent-soft: #E4F0F0;
-    --tile-bg: #0A4F53;
-    --tile-fg: #fff;
-    --glow: #fff;
-    --fractal-filter: none;
-    --fractal-opacity: .10;
-    --hint-bg: rgba(255, 255, 255, .7);
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #101616;
-    --ink: #e8eeee;
-    --muted: #a6b3b3;
-    --line: #2A3A3A;
-    --accent: #6FD3D6;
-    --accent-dark: #9FE3E6;
-    --accent-soft: #1B2B2B;
-    --tile-bg: #0E6D72;
-    --tile-fg: #fff;
-    --glow: #101616;
-    --fractal-filter: invert(1);
-    --fractal-opacity: .12;
-    --hint-bg: rgba(16, 22, 22, .7);
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* fractal de fundo, fixo, bem claro */
-  #fx {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: var(--fractal-opacity);
-    filter: var(--fractal-filter);
-    pointer-events: none;
-  }
-
-  main {
-    position: relative;
-    z-index: 1;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 40px 22px 120px;
-  }
-
-  /* sombra clara nas fontes pra não brigar com o fractal */
-  main, main * {
-    text-shadow: 0 0 2px var(--glow), 0 0 6px var(--glow), 0 0 12px var(--glow), 0 0 22px var(--glow), 0 0 34px var(--glow);
-  }
-
-  header { padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
-  h1 {
-    margin: 0;
-    font-size: 34px;
-    font-weight: 600;
-    letter-spacing: .3px;
-    line-height: 1.05;
-  }
-  .role {
-    margin-top: 6px;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .intro {
-    margin: 18px 0 0;
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--ink);
-  }
-
-  section { margin-top: 26px; }
-  h2 {
-    margin: 0 0 12px;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-  h2::before {
-    content: "";
-    display: inline-block;
-    width: 9px; height: 9px;
-    background: var(--accent);
-    margin-right: 10px;
-    vertical-align: middle;
-    position: relative; top: -1px;
-  }
-
-  .entry {
-    border-left: 3px solid var(--accent-soft);
-    padding-left: 14px;
-    margin-bottom: 16px;
-  }
-  .entry:last-child { margin-bottom: 0; }
-  .org { font-size: 16px; font-weight: 700; }
-  .sub { color: var(--accent-dark); font-weight: 600; }
-  .meta { color: var(--muted); font-size: 13.5px; }
-  .meta + .meta { margin-top: 1px; }
-
-  ul { margin: 8px 0 0; padding: 0; list-style: none; }
-  li { position: relative; padding-left: 16px; margin-bottom: 5px; }
-  li::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 9px;
-    width: 6px; height: 6px;
-    background: var(--accent);
-  }
-
-  .tiles { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tile {
-    display: inline-block;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--tile-fg);
-    background: var(--tile-bg);
-    padding: 7px 13px;
-    border-radius: 3px;
-    text-shadow: none;
-  }
-  .tile.solid { background: var(--accent); color: #fff; }
-
-  .skill-group { margin-bottom: 14px; }
-  .skill-label { font-weight: 700; color: var(--accent-dark); font-size: 14px; margin: 0 0 7px; }
-  .skill-group .tiles { margin-top: 0; }
-
-  a { color: var(--accent); text-decoration: none; }
-  a:active { text-decoration: underline; }
-
-  footer {
-    margin-top: 34px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-    text-align: center;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: .2px;
-  }
-  footer .accent { color: var(--accent); font-weight: 600; }
-
-  .hint {
-    position: fixed;
-    left: 50%;
-    bottom: 14px;
-    transform: translateX(-50%);
-    z-index: 2;
-    font-size: 12px;
-    color: var(--muted);
-    background: var(--hint-bg);
-    padding: 6px 12px;
-    border-radius: 999px;
-    transition: opacity .4s ease;
-  }
-  .theme-toggle {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    z-index: 3;
-    font: inherit;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent);
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 6px 12px;
-    cursor: pointer;
-    text-shadow: none;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
-  }
-  .theme-toggle:hover { border-color: var(--accent); }
-</style>
+<meta name="author" content="Ulisses Casemiro">
+<meta name="description" content="Currículo de Ulisses Casemiro, desenvolvedor de software com foco em backend e IA, com experiência em RAG, LLMs, realidade virtual e desenvolvimento de jogos.">
+<meta name="keywords" content="Ulisses Casemiro, desenvolvedor de software, backend, IA, RAG, LLMs, Python, Unreal Engine, realidade virtual, currículo">
+<link rel="canonical" href="https://ulisses177.github.io/Curriculum-git/">
+<link rel="alternate" hreflang="pt-BR" href="https://ulisses177.github.io/Curriculum-git/">
+<link rel="alternate" hreflang="en-GB" href="https://ulisses177.github.io/Curriculum-git/en/">
+<link rel="alternate" hreflang="x-default" href="https://ulisses177.github.io/Curriculum-git/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Ulisses Casemiro | Desenvolvedor de Software | Backend e IA">
+<meta property="og:description" content="Currículo de Ulisses Casemiro, desenvolvedor de software com foco em backend e IA, com experiência em RAG, LLMs, realidade virtual e desenvolvimento de jogos.">
+<meta property="og:url" content="https://ulisses177.github.io/Curriculum-git/">
+<meta property="og:locale" content="pt_BR">
+<link rel="stylesheet" href="assets/styles.css">
 <script>
 (function(){
   try {
@@ -213,7 +31,10 @@
 
 <canvas id="fx"></canvas>
 
-<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema">Tema escuro</button>
+<div class="controls">
+  <button id="theme-toggle" class="theme-toggle" type="button" data-dark-label="Tema escuro" data-light-label="Tema claro" aria-label="Tema escuro">Tema escuro</button>
+  <a class="lang-toggle" href="en/" aria-label="Mudar para inglês" title="English"><span class="lang-flag" aria-hidden="true">🇬🇧</span></a>
+</div>
 
 <main>
   <header>
@@ -229,9 +50,13 @@
       <div class="sub">Desenvolvedor de Software</div>
       <div class="meta">jun. 2024 a mai. 2026 · Curitiba, PR</div>
       <ul>
+
         <li>Implementação de uma plataforma interna de IA com interface própria para padronizar o uso de agentes de codificação, incluindo a avaliação de diferentes ferramentas antes da adoção.</li>
+
         <li>Desenvolvimento de um chatbot corporativo com Geração Aumentada por Recuperação (RAG), com indexação e ajuste de uma base de centenas de documentos de procedimentos internos para atuar junto ao help desk.</li>
+
         <li>Criação de um processador de editais que coleta dados públicos de licitações em diferentes países e utiliza IA para análise eficiente de conformidade com o sistema da Exati.</li>
+
       </ul>
     </div>
 
@@ -240,8 +65,11 @@
       <div class="sub">Desenvolvedor de Jogos</div>
       <div class="meta">mar. 2020 a dez. 2021 · Curitiba, PR</div>
       <ul>
+
         <li>Desenvolvimento, em Unreal Engine, de um simulador de laboratório em VR para o Meta Quest 2, voltado a um cliente do setor educacional, cobrindo o currículo de química e ciências do ensino fundamental e médio e os experimentos obrigatórios do Ministério da Educação (MEC).</li>
-        <li>Participação na Global Game Jam 2021, maratona mundial de criação de jogos, com equipe e espaço cedidos pela Imersys, conquistando a categoria &ldquo;Unreal Engine Multiplayer Diversifier&rdquo; com o jogo Geisterjäger.</li>
+
+        <li>Participação na Global Game Jam 2021, maratona mundial de criação de jogos, com equipe e espaço cedidos pela Imersys, conquistando a categoria “Unreal Engine Multiplayer Diversifier” com o jogo Geisterjäger.</li>
+
       </ul>
     </div>
 
@@ -250,87 +78,147 @@
       <div class="sub">Estagiário de Pesquisa</div>
       <div class="meta">2017 a 2019 · Curitiba, PR</div>
       <ul>
+
         <li>Atuação na arquitetura e na implementação de software de pesquisa aplicada, com nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamento de técnicos operadores da infraestrutura de alta tensão e visualizações computacionais.</li>
+
         <li>Arquitetura e implementação de uma visualização em Unreal Engine de malhas de proteção contra descargas atmosféricas em subestações de alta tensão, em parceria com a Copel (distribuidora).</li>
+
         <li>Contribuição para a publicação no International Journal of Electrical and Computer Engineering em 2018.</li>
+
       </ul>
     </div>
+
   </section>
 
   <section>
     <h2>Trajetória</h2>
-    <p class="intro">A trajetória profissional teve início no Lactec, com pesquisa aplicada em nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamento de técnicos operadores da infraestrutura de alta tensão e visualizações computacionais. O projeto que originou a publicação no <em>International Journal of Electrical and Computer Engineering</em> em 2018 consistiu na implementação de uma visualização em Unreal Engine de malhas de proteção contra descargas atmosféricas em subestações de alta tensão, em parceria com a Copel (distribuidora). Na Imersys, o trabalho envolveu o desenvolvimento, em Unreal Engine, de um simulador de laboratório em VR para o currículo de química e ciências do ensino fundamental e médio, com interações complexas, simulação de reações e shaders otimizados para o Meta Quest 2. A participação na Global Game Jam 2021, maratona mundial de criação de jogos, ocorreu com equipe e espaço cedidos pela Imersys e resultou na categoria &ldquo;Unreal Engine Multiplayer Diversifier&rdquo; com o jogo Geisterjäger. Na Exati Solutions, as atividades incluíram a implementação de uma plataforma interna de IA para padronizar o uso de agentes de codificação, o desenvolvimento de um chatbot corporativo com RAG sobre centenas de documentos de procedimentos internos e a criação de um processador de editais com análise de conformidade para licitações públicas. A formação em Engenharia da Computação está em andamento na FMU, com conclusão prevista para dezembro de 2028.</p>
+
+    <p class="intro">A trajetória profissional teve início no Lactec, com pesquisa aplicada em nuvens de pontos, georreferenciamento e motores de jogos para simulações, treinamento de técnicos operadores da infraestrutura de alta tensão e visualizações computacionais. O projeto que originou a publicação no <em>International Journal of Electrical and Computer Engineering</em> em 2018 consistiu na implementação de uma visualização em Unreal Engine de malhas de proteção contra descargas atmosféricas em subestações de alta tensão, em parceria com a Copel (distribuidora).</p>
+
+    <p class="intro">Na Imersys, o trabalho envolveu o desenvolvimento, em Unreal Engine, de um simulador de laboratório em VR para o currículo de química e ciências do ensino fundamental e médio, com interações complexas, simulação de reações e shaders otimizados para o Meta Quest 2. A participação na Global Game Jam 2021, maratona mundial de criação de jogos, ocorreu com equipe e espaço cedidos pela Imersys e resultou na categoria “Unreal Engine Multiplayer Diversifier” com o jogo Geisterjäger.</p>
+
+    <p class="intro">Na Exati Solutions, as atividades incluíram a implementação de uma plataforma interna de IA para padronizar o uso de agentes de codificação, o desenvolvimento de um chatbot corporativo com RAG sobre centenas de documentos de procedimentos internos e a criação de um processador de editais com análise de conformidade para licitações públicas.</p>
+
+    <p class="intro">A formação em Engenharia da Computação está em andamento na FMU, com conclusão prevista para dezembro de 2028.</p>
+
   </section>
 
   <section>
     <h2>Competências</h2>
+
     <div class="skill-group">
       <p class="skill-label">Linguagens</p>
       <div class="tiles">
+
         <span class="tile">Python</span>
+
         <span class="tile">C</span>
+
         <span class="tile">C++</span>
+
         <span class="tile">Java</span>
+
         <span class="tile">JavaScript</span>
+
         <span class="tile">C#</span>
+
         <span class="tile">Lua</span>
+
       </div>
     </div>
+
     <div class="skill-group">
       <p class="skill-label">IA</p>
       <div class="tiles">
+
         <span class="tile">RAG</span>
+
         <span class="tile">Grandes modelos de linguagem (LLMs) multimodais</span>
+
         <span class="tile">LLMs locais</span>
+
         <span class="tile">Agentes recursivos</span>
+
         <span class="tile">Fine-tuning de LLMs</span>
+
         <span class="tile">Modelos generativos</span>
+
         <span class="tile">Processamento de Linguagem Natural (NLP)</span>
+
         <span class="tile">CUDA</span>
+
       </div>
     </div>
+
     <div class="skill-group">
       <p class="skill-label">Dados e 3D</p>
       <div class="tiles">
+
         <span class="tile">Bancos de dados relacionais (SQL)</span>
+
         <span class="tile">Bancos vetoriais (vector stores)</span>
+
         <span class="tile">Nuvens de pontos</span>
+
         <span class="tile">Georreferenciamento</span>
+
       </div>
     </div>
+
     <div class="skill-group">
       <p class="skill-label">Backend</p>
       <div class="tiles">
+
         <span class="tile">Integração de serviços</span>
+
         <span class="tile">Ambientes corporativos</span>
+
       </div>
     </div>
+
     <div class="skill-group">
       <p class="skill-label">Jogos e imersão</p>
       <div class="tiles">
+
         <span class="tile">Unreal Engine</span>
+
         <span class="tile">Unity</span>
+
         <span class="tile">Godot</span>
+
         <span class="tile">Realidade Virtual (VR)</span>
+
         <span class="tile">Shaders</span>
+
         <span class="tile">Otimização para Meta Quest 2</span>
+
       </div>
     </div>
+
     <div class="skill-group">
       <p class="skill-label">Práticas</p>
       <div class="tiles">
+
         <span class="tile">Arquitetura de software</span>
+
         <span class="tile">Scrum</span>
+
         <span class="tile">Metodologias ágeis</span>
+
       </div>
     </div>
+
     <div class="skill-group">
       <p class="skill-label">Idiomas</p>
       <div class="tiles">
+
         <span class="tile">Português nativo</span>
+
         <span class="tile">Inglês fluente</span>
+
       </div>
     </div>
+
   </section>
 
   <section>
@@ -354,205 +242,6 @@
 
 <div class="hint" id="hint">role para animar o Julia ↓</div>
 
-<script>
-/* ============ estado base (do seu print) ============ */
-const BASE = {
-  zoom: 0.369, panX: 0.10337, panY: -0.03367, angle: -0.08,
-  cRe: 0.50274, cIm: 0.47987, lineH: 4.0, maxIter: 40.0
-};
-const SPAN = 0.6;               // intervalo (radianos) que o c gira conforme você rola
-const BASE_THETA = Math.atan2(BASE.cIm, BASE.cRe);
-const BASE_R = Math.hypot(BASE.cRe, BASE.cIm);
-
-let canvas = document.getElementById('fx');
-let gl, program, ctx2d, renderer = 'none';
-let progress = 0.5;
-
-/* ============ shader (estimador de distância, só o contorno) ============ */
-const VS = `attribute vec4 position; void main(){ gl_Position = position; }`;
-
-const FS = `precision highp float;
-uniform vec2 resolution;
-uniform float zoom;
-uniform vec2 pan;
-uniform float angle;
-uniform vec2 c;
-uniform float lineH;
-uniform float maxIter;
-const float MAXI = 400.0;
-vec2 cmul(vec2 a, vec2 b){ return vec2(a.x*b.x - a.y*b.y, a.x*b.y + a.y*b.x); }
-void main(){
-  vec2 res = resolution;
-  float m = min(res.x, res.y);
-  vec2 uv = (gl_FragCoord.xy - 0.5*res)/m;
-  float s = sin(angle), co = cos(angle);
-  uv = mat2(co,-s,s,co)*uv;
-  uv = uv/zoom + pan;
-  float pw = 1.0/(m*zoom);
-  vec2 z = uv; vec2 dz = vec2(1.0,0.0); float escaped = 0.0;
-  for(float i=0.0;i<MAXI;i++){
-    dz = 2.0*cmul(z,dz);
-    z = cmul(z,z) + c;
-    if(dot(z,z) > 256.0){ escaped = 1.0; break; }
-    if(i >= maxIter) break;
-  }
-  float ink = 0.0;
-  if(escaped > 0.5){
-    float mm = sqrt(dot(z,z));
-    float d = mm*log(mm)/max(length(dz),1e-9);
-    float eps = pw*max(0.4,lineH);
-    ink = 1.0 - smoothstep(eps, eps+pw, d);
-  }
-  gl_FragColor = vec4(vec3(1.0 - ink), 1.0);
-}`;
-
-function compile(type, src){
-  const sh = gl.createShader(type);
-  gl.shaderSource(sh, src); gl.compileShader(sh);
-  if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)){ console.error(gl.getShaderInfoLog(sh)); return null; }
-  return sh;
-}
-
-function initGL(){
-  gl = canvas.getContext('webgl', {antialias:true}) || canvas.getContext('experimental-webgl');
-  if(gl){
-    const vs = compile(gl.VERTEX_SHADER, VS), fs = compile(gl.FRAGMENT_SHADER, FS);
-    if(vs && fs){
-      program = gl.createProgram();
-      gl.attachShader(program, vs); gl.attachShader(program, fs); gl.linkProgram(program);
-      if(gl.getProgramParameter(program, gl.LINK_STATUS)){
-        const buf = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
-        const loc = gl.getAttribLocation(program, 'position');
-        gl.enableVertexAttribArray(loc);
-        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-        renderer = 'webgl';
-        return;
-      }
-    }
-    gl = null;
-  }
-  // fallback 2D
-  const nc = canvas.cloneNode(false);
-  canvas.parentNode.replaceChild(nc, canvas);
-  canvas = nc;
-  ctx2d = canvas.getContext('2d');
-  renderer = ctx2d ? '2d' : 'none';
-}
-
-function resize(){
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = Math.floor(window.innerWidth * dpr);
-  canvas.height = Math.floor(window.innerHeight * dpr);
-  canvas.style.width = window.innerWidth + 'px';
-  canvas.style.height = window.innerHeight + 'px';
-  if(renderer === 'webgl') gl.viewport(0,0,canvas.width,canvas.height);
-  else dirty = true;
-}
-
-/* 2D fallback (mesma matemática) */
-let dirty = true;
-function escDist2D(wx, wy, cx, cy, maxIter){
-  let zx = wx, zy = wy, dzx = 1, dzy = 0;
-  const mi = Math.min(maxIter, 400);
-  for(let k=0;k<mi;k++){
-    const ndzx = 2*(zx*dzx - zy*dzy), ndzy = 2*(zx*dzy + zy*dzx);
-    dzx = ndzx; dzy = ndzy;
-    const nx = zx*zx - zy*zy + cx, ny = 2*zx*zy + cy;
-    zx = nx; zy = ny;
-    const r2 = zx*zx + zy*zy;
-    if(r2 > 256){
-      const mm = Math.sqrt(r2);
-      return mm*Math.log(mm)/Math.max(Math.hypot(dzx,dzy),1e-9);
-    }
-  }
-  return -1;
-}
-function render2D(cx, cy){
-  const scale = 0.5;
-  const W = Math.max(2, Math.round(canvas.width*scale));
-  const H = Math.max(2, Math.round(canvas.height*scale));
-  const off = document.createElement('canvas'); off.width = W; off.height = H;
-  const octx = off.getContext('2d');
-  const img = octx.createImageData(W, H);
-  const data = img.data;
-  const m = Math.min(W, H), zoom = BASE.zoom * (W / (canvas.width)); // mantém enquadramento
-  const zoomW = BASE.zoom * (canvas.width / m); // world zoom relativo
-  const sA = Math.sin(BASE.angle), cA = Math.cos(BASE.angle);
-  const pw = 1/(m*BASE.zoom);
-  const eps = pw*Math.max(0.4, BASE.lineH);
-  const smooth = (a,b,x)=>{ const t=Math.max(0,Math.min(1,(x-a)/(b-a))); return t*t*(3-2*t); };
-  for(let y=0;y<H;y++){
-    const idy = (H/2 - (y+0.5))/m;
-    for(let x=0;x<W;x++){
-      const idx = (x+0.5 - W/2)/m;
-      const ux = cA*idx - sA*idy, uy = sA*idx + cA*idy;
-      const wx = ux/BASE.zoom + BASE.panX, wy = uy/BASE.zoom + BASE.panY;
-      const d = escDist2D(wx, wy, cx, cy, BASE.maxIter);
-      let ink = 0;
-      if(d >= 0) ink = 1 - smooth(eps, eps+pw, d);
-      const v = Math.round(255*(1-Math.max(0,Math.min(1,ink))));
-      const o = (y*W+x)*4;
-      data[o]=v; data[o+1]=v; data[o+2]=v; data[o+3]=255;
-    }
-  }
-  octx.putImageData(img,0,0);
-  ctx2d.clearRect(0,0,canvas.width,canvas.height);
-  ctx2d.imageSmoothingEnabled = true;
-  ctx2d.drawImage(off,0,0,canvas.width,canvas.height);
-  dirty = false;
-}
-
-function draw(){
-  const th = BASE_THETA + (progress - 0.5) * SPAN;
-  const cx = BASE_R*Math.cos(th), cy = BASE_R*Math.sin(th);
-  if(renderer === 'webgl'){
-    gl.useProgram(program);
-    const u = (n)=>gl.getUniformLocation(program,n);
-    gl.uniform2f(u('resolution'), canvas.width, canvas.height);
-    gl.uniform1f(u('zoom'), BASE.zoom);
-    gl.uniform2f(u('pan'), BASE.panX, BASE.panY);
-    gl.uniform1f(u('angle'), BASE.angle);
-    gl.uniform2f(u('c'), cx, cy);
-    gl.uniform1f(u('lineH'), BASE.lineH);
-    gl.uniform1f(u('maxIter'), BASE.maxIter);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-  } else if(renderer === '2d' && dirty){
-    render2D(cx, cy);
-  }
-}
-
-function updateProgress(){
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  progress = max > 4 ? Math.min(1, Math.max(0, window.scrollY/max)) : 0.5;
-  if(renderer === '2d') dirty = true;
-  const h = document.getElementById('hint');
-  if(h && window.scrollY > 40) h.style.opacity = '0';
-}
-
-/* ============ tema ============ */
-const themeToggle = document.getElementById('theme-toggle');
-function syncThemeToggle(){
-  const dark = document.documentElement.dataset.theme === 'dark';
-  themeToggle.textContent = dark ? 'Tema claro' : 'Tema escuro';
-  themeToggle.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
-}
-themeToggle.addEventListener('click', () => {
-  const dark = document.documentElement.dataset.theme === 'dark';
-  document.documentElement.dataset.theme = dark ? 'light' : 'dark';
-  try { localStorage.setItem('theme', document.documentElement.dataset.theme); } catch(e) {}
-  syncThemeToggle();
-});
-syncThemeToggle();
-
-function loop(){ draw(); requestAnimationFrame(loop); }
-
-window.addEventListener('scroll', updateProgress, {passive:true});
-window.addEventListener('resize', () => { resize(); updateProgress(); });
-window.addEventListener('load', () => {
-  initGL(); resize(); updateProgress(); loop();
-});
-</script>
+<script src="assets/fractal.js"></script>
 </body>
 </html>
